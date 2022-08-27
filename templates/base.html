@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Raymond Cortes">
+    <meta name="description" content="A Python and Django application to perform CRUD operations against a SQLite database to retrieve books.">
     <title>PyBook</title>
     <link
       rel="stylesheet"
@@ -11,12 +13,7 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-    <style>
-      .navbar-brand > img {
-          height: 60px;
-          border-radius: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href={% static 'main.css' %}>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
