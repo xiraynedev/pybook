@@ -12,8 +12,14 @@ class BookAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     fieldsets = ((None, {'fields': ('creator', 'book')}), ('Review Comment', {'fields': ('comment', 'rating')}))
 
+
+class ContributorAdmin(admin.ModelAdmin):
+    list_display = ('last_name', 'first_name')
+    search_fields = ('last_name__startswith', 'first_name')
+    list_filter = ('last_name',)
+
 admin.site.register(Publisher)
 admin.site.register(Book, BookAdmin)
 admin.site.register(BookContributor)
-admin.site.register(Contributor)
+admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(Review, ReviewAdmin)

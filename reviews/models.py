@@ -44,9 +44,6 @@ class Contributor(models.Model):
     last_name = models.CharField(max_length=50, help_text='The contributor\'s last name')
     email = models.EmailField(help_text='The contact email of the contributor')
 
-    def __str__(self):
-        return self.first_name
-
 
 class Review(models.Model):
    comment = models.TextField(help_text='The review comment')
