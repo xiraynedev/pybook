@@ -11,10 +11,16 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
+    <style>
+      .navbar-brand > img {
+          height: 60px;
+          border-radius: 10px;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="/">Book Review</a>
+      <a class="navbar-brand" href="/"><img src={% static 'images/book-logo.avif' %} alt="PyBook logo"></a>
       <button
         class="navbar-toggler"
         type="button"
