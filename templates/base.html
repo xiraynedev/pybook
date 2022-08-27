@@ -20,7 +20,9 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="/"><img src={% static 'images/book-logo.avif' %} alt="PyBook logo"></a>
+      {% block brand %}
+        <a class="navbar-brand" href="/"><img src={% static 'images/book-logo.avif' %} alt="PyBook logo"></a>
+      {% endblock %}
       <button
         class="navbar-toggler"
         type="button"
@@ -56,6 +58,9 @@
         </form>
       </div>
     </nav>
+    {% block heading %}
+      <h1 class="m-3">Welcome to PyBook!</h1>
+    {% endblock %}
     {% block content %}
     {% endblock %}
     {% block details %}
