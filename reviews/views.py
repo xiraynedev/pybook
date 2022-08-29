@@ -1,7 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from .models import Book, Review
+from .models import Book, Review, Contributor
 from .utils import average_rating
-
+from .forms import SearchForm
 
 # Create your views here.
 def index(request):
@@ -39,3 +40,36 @@ def book_details(request, id):
     context = {'book': book, 'overall_rating': overall_rating, 'reviews': reviews}
 
     return render(request, 'book_details.html', context)
+
+
+def book_search(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+    else:
+        form = SearchForm()
+
+    return render(request, 'book_search.html', {'form': form})
+
+
+def results(request):
+    search = request.POST.get('search')
+    search_in = request.POST.get('search_in')
+
+    if search_in == '1':
+        try:
+            book = Book.objects.filter(title__icontains = search)
+            print(book)
+            if len(book) == 0:
+                raise Exception()
+        except:
+            return render(request, 'error.html', {'error': 'No book was found.'})
+
+    elif search_in == '2':
+        try:
+            contributor = Contributor.objects.get(first_name__icontains = search)
+            book = contributor.book_set.all()
+        except:
+            return render(request, 'error.html', {'error': 'No contributor was found.'})
+
+
+    return render(request, 'search_results.html', {'book': book[0]})

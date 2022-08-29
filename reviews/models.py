@@ -45,6 +45,10 @@ class Contributor(models.Model):
     email = models.EmailField(help_text='The contact email of the contributor')
 
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
+
 class Review(models.Model):
    comment = models.TextField(help_text='The review comment')
    rating = models.IntegerField(help_text='The rating the reviewer has given')
