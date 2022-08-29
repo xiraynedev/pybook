@@ -43,33 +43,32 @@ def book_details(request, id):
 
 
 def book_search(request):
-    if request.method == 'POST':
-        form = SearchForm(request.POST)
-    else:
-        form = SearchForm()
+    form = SearchForm()
 
     return render(request, 'book_search.html', {'form': form})
 
 
 def results(request):
-    search = request.POST.get('search')
-    search_in = request.POST.get('search_in')
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['search_in'] == '1':
+                try:
+                    book = Book.objects.filter(title__icontains = form.cleaned_data['search'])
 
-    if search_in == '1':
-        try:
-            book = Book.objects.filter(title__icontains = search)
-            print(book)
-            if len(book) == 0:
-                raise Exception()
-        except:
-            return render(request, 'error.html', {'error': 'No book was found.'})
+                    if len(book) == 0:
+                        raise Exception()
 
-    elif search_in == '2':
-        try:
-            contributor = Contributor.objects.get(first_name__icontains = search)
-            book = contributor.book_set.all()
-        except:
-            return render(request, 'error.html', {'error': 'No contributor was found.'})
+                except:
+                    return render(request, 'error.html', {'error': 'No book was found.'})
+            elif form.cleaned_data['search_in'] == '2':
+                try:
+                    contributor = Contributor.objects.get(first_name__icontains = form.cleaned_data['search'])
+                    book = contributor.book_set.all()
 
+                except:
+                    return render(request, 'error.html', {'error': 'No contributor was found.'})
+    else:
+        form = SearchForm()
 
     return render(request, 'search_results.html', {'book': book[0]})
