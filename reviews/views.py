@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Book, Review, Contributor
 from .utils import average_rating
 from .forms import SearchForm
@@ -55,7 +56,6 @@ def results(request):
             if form.cleaned_data['search_in'] == '1':
                 try:
                     book = Book.objects.filter(title__icontains = form.cleaned_data['search'])
-
                     if len(book) == 0:
                         raise Exception()
 
@@ -71,4 +71,4 @@ def results(request):
     else:
         form = SearchForm()
 
-    return render(request, 'search_results.html', {'book': book[0]})
+    return redirect(reverse(book_details, kwargs={'id': book[0].id}))
