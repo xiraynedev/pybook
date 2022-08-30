@@ -5,6 +5,7 @@
 {% block search %}
     <form method="POST" action="http://localhost:8000/results/" class="m-3">
       {% csrf_token %}
-        {{ form.as_p }}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 {% endblock %}
