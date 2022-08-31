@@ -1,18 +1,15 @@
-"""import modules"""
-from django.urls import reverse
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Book, Contributor
+from .models import Book, Contributor, Publisher
 from .utils import average_rating
-from .forms import SearchForm
+from .forms import SearchForm, PublisherForm
 
 
 def index(request):
-    """main route for reviews app"""
     return render(request, "base.html", {"title": "PyBook"})
 
 
 def books(request):
-    """the books route to handle retrieving all books and information"""
     all_books = Book.objects.all()
     all_books_list = []
 
@@ -39,9 +36,8 @@ def books(request):
     return render(request, "books_list.html", context)
 
 
-def book_details(request, book_id):
-    """return the details template for the all_books"""
-    book = get_object_or_404(Book, id=book_id)
+def book_details(request, id):
+    book = get_object_or_404(Book, id=id)
 
     reviews = book.review_set.all()
 
@@ -57,14 +53,12 @@ def book_details(request, book_id):
 
 
 def book_search(request):
-    """return a search form to the client"""
     form = SearchForm()
 
     return render(request, "book_search.html", {"form": form})
 
 
 def results(request):
-    """process the search form results"""
     if request.method == "POST":
         form = SearchForm(request.POST)
         if form.is_valid():
@@ -98,4 +92,36 @@ def results(request):
     else:
         form = SearchForm()
 
-    return redirect(reverse(book_details, kwargs={"book_id": book[0].id}))
+    return redirect(f"/books/{book[0].id}", book[0].id)
+
+
+def publishers(request):
+    form = PublisherForm()
+
+    return render(request, "publishers.html", {"form": form})
+
+
+def publisher_edit(request, pk=None):
+    if pk is not None:
+        publisher = get_object_or_404(Publisher, pk=pk)
+    else:
+        publisher = None
+
+    if request.method == "POST":
+        form = PublisherForm(request.POST, instance=publisher)
+        if form.is_valid():
+            updated_publisher = form.save()
+            if publisher is None:
+                print("creating publisher")
+                messages.success(request, f"Publisher {updated_publisher} was created.")
+            else:
+                print("updating publisher")
+                messages.success(request, f"Publisher {updated_publisher} was updated")
+
+            return redirect(publisher_edit, updated_publisher.pk)
+    else:
+        form = PublisherForm(instance=publisher)
+
+    return render(
+        request, "publisher_list.html", {"method": request.method, "form": form}
+    )

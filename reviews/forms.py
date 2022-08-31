@@ -1,9 +1,8 @@
-""" install modules """
 from django import forms
+from .models import Publisher
 
 
 class SearchForm(forms.Form):
-    """search form class to convert into html form"""
 
     SEARCH_CHOICES = (("1", "title"), ("2", "contributor"))
     search = forms.CharField(
@@ -16,3 +15,9 @@ class SearchForm(forms.Form):
         min_length=3,
     )
     search_in = forms.ChoiceField(choices=SEARCH_CHOICES, required=False)
+
+
+class PublisherForm(forms.ModelForm):
+    class Meta:
+        model = Publisher
+        fields = "__all__"
