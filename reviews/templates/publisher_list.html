@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block heading %}
-    <h1>Publisher List</h1>
+    <h1 class="m-3">Publisher List</h1>
 {% endblock %}
 {% block publisher_request %}
-
+    {% for message in messages %}
+        <h2 class="m-3">{{ message }}</h2>
+    {% endfor %}
 {% endblock %}

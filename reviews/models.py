@@ -40,6 +40,9 @@ class BookContributor(models.Model):
         max_length=20,
     )
 
+    def __str__(self):
+        return self.contributor
+
 
 class Contributor(models.Model):
     first_name = models.CharField(
@@ -69,3 +72,6 @@ class Review(models.Model):
     book = models.ForeignKey(
         Book, on_delete=models.CASCADE, help_text="The book that this review is for"
     )
+
+    def __str__(self):
+        return self.book
