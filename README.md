@@ -1,10 +1,11 @@
 ![Python](https://img.shields.io/badge/Python-3.9.2-red)
 ![Django](https://img.shields.io/badge/Django-3.1-green)
 ![pip](https://img.shields.io/badge/pip-20.3.4-lightgrey)
+![WSL2](https://img.shields.io/badge/WSL2-Windows%20Subsystem%20for%20Linux-informational)
 
 # pybook
 
-This project is built with Python and Django on the Debian OS running on the Windows Subsystem for Linux. The app performs CRUD operations on a SQLite database to retrieve book information and display it in templates.
+This project is built with Python and Django on the Debian OS running on the Windows Subsystem for Linux. The app performs CRUD operations on a SQLite database to retrieve book information and display it in templates. Python 3.9.2, Django 3.1, pip 20.3.4, and WSL2 running Debian was used for this project.
 
 ![project screenshot](assets/images/project-screenshot.webp)
 ![books screenshot](assets/images/books-screenshot.webp)
