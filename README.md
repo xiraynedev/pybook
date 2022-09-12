@@ -50,7 +50,7 @@ python3 -m pip install django==3.1 python-decouple
 6. Create a `.env` file and add any value for the variable `SECRET_KEY=anyvalue`:
 
 ```sh
-touch .env
+echo SECRET_KEY=anyvalue > .env
 ```
 
 7. Run the migrate command:
