@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Raymond Cortes">
+    <meta name="author" content="xiraynedev">
     <meta name="description" content="A Python and Django application to perform CRUD operations against a SQLite database to retrieve books.">
     <title>PyBook</title>
     <link
@@ -33,7 +33,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/books/"
               >Books <span class="sr-only">(current)</span></a
             >
@@ -45,17 +45,6 @@
             <a class="nav-link" href="/publishers/">Add Publisher</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-3" type="submit">
-            Search
-          </button>
-        </form>
       </div>
     </nav>
     {% block heading %}
