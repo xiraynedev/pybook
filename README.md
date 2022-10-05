@@ -1,5 +1,5 @@
 ![Python](https://img.shields.io/badge/Python-3.9.2-red)
-![Django](https://img.shields.io/badge/Django-4.1.1-green)
+![Django](https://img.shields.io/badge/Django-4.1.2-green)
 ![pip](https://img.shields.io/badge/pip-22.2.2-lightgrey)
 ![WSL2](https://img.shields.io/badge/WSL2-Windows%20Subsystem%20for%20Linux-informational)
 
