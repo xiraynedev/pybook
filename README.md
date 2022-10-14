@@ -44,7 +44,7 @@ source .venv/bin/activate
 5. Install dependencies:
 
 ```sh
-python3 -m pip install django==3.1 python-decouple
+python3 -m pip install django==4.1.2 python-decouple
 ```
 
 6. Create a `.env` file and add any value for the variable `SECRET_KEY=anyvalue`:
