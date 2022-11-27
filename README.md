@@ -1,6 +1,6 @@
 ![Python](https://img.shields.io/badge/Python-3.9.2-red)
-![Django](https://img.shields.io/badge/Django-4.1.2-green)
-![pip](https://img.shields.io/badge/pip-22.2.2-lightgrey)
+![Django](https://img.shields.io/badge/Django-4.1.3-green)
+![pip](https://img.shields.io/badge/pip-22.3.1-lightgrey)
 ![WSL2](https://img.shields.io/badge/WSL2-Windows%20Subsystem%20for%20Linux-informational)
 
 # pybook
@@ -44,7 +44,7 @@ source .venv/bin/activate
 5. Install dependencies:
 
 ```sh
-python3 -m pip install django==4.1.2 python-decouple
+python3 -m pip install django==4.1.3 python-decouple
 ```
 
 6. Create a `.env` file and add any value for the variable `SECRET_KEY=anyvalue`:
