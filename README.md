@@ -5,9 +5,9 @@
 
 # pybook
 
-This project is built with Python and Django on the Debian OS running on the Windows Subsystem for Linux. The app performs CRUD operations on a SQLite database to retrieve book information and display it in templates.
+PyBook was built with Python and Django on the Debian OS running on the Windows Subsystem for Linux. The application performs CRUD operations on a SQLite database and retrieves book information to display in templates.
 
-![project screenshot](assets/images/project-screenshot.webp)
+![application screenshot](assets/images/application-screenshot.webp)
 ![books screenshot](assets/images/books-screenshot.webp)
 ![search screenshot](assets/images/search-screenshot.webp)
 ![add publisher screenshot](assets/images/add-publisher-screenshot.webp)
